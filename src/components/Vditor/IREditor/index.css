@@ -1,0 +1,10 @@
+.vditor-container {
+  margin: 20px 10px;
+  padding: 15px;
+}
+
+.vditor--dark {
+  .vditor-reset {
+    color: #fff;
+  }
+}

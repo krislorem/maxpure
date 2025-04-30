@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #fff;
+}
+
+html.dark {
+  background-color: #000;
+
+  .vditor--dark {
+    .vditor-reset {
+      color: #fff;
+    }
+  }
+
+  .dark.vditor-reset {
+    color: #fff;
+  }
+
+  .react-activity-calendar__legend-month {
+    color: #fff;
+  }
+
+  .react-activity-calendar__count {
+    color: #fff;
+  }
+
+  .react-activity-calendar__legend-weekday {
+    color: #fff;
+  }
+
+}
