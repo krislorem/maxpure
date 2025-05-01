@@ -17,6 +17,7 @@ const injectBaseStyles = () => {
         ::view-transition-new(root) {
           animation: none;
           mix-blend-mode: normal;
+          isolation: isolate;
           ${isHighResolution ? 'transform: translateZ(0);' : ''}
         }
         
@@ -117,25 +118,43 @@ export const useModeAnimation = (props?: ReactThemeSwitchAnimationProps): ReactT
 
     // Find the maximum distance to ensure animation covers the entire viewport
     const maxRadius = Math.max(topLeft, topRight, bottomLeft, bottomRight)
-
-    await (document as any).startViewTransition(() => {
-      flushSync(() => {
-        setIsDarkMode(!isDarkMode)
-      })
-    }).ready
-
-    document.documentElement.animate(
-      {
-        clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${maxRadius}px at ${x}px ${y}px)`],
-      },
-      {
-        duration,
-        easing,
-        pseudoElement,
-      }
-    )
+    if (isDarkMode) {
+      await (document as any).startViewTransition(() => {
+        flushSync(() => {
+          setIsDarkMode(!isDarkMode)
+        })
+      }).ready
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `path('M0 0H${window.innerWidth}V${window.innerHeight}H0V0ZM${x - maxRadius} ${y} a${maxRadius},${maxRadius} 0 1,0 ${maxRadius * 2},0 a${maxRadius},${maxRadius} 0 1,0 -${maxRadius * 2},0')`,
+            `path('M0 0H${window.innerWidth}V${window.innerHeight}H0V0ZM${x} ${y}a0,0 0 1,0 0.1,0a0,0 0 1,0 -0.1,0')`
+          ]
+        },
+        {
+          duration,
+          easing,
+          pseudoElement,
+        }
+      )
+    } else {
+      await (document as any).startViewTransition(() => {
+        flushSync(() => {
+          setIsDarkMode(!isDarkMode)
+        })
+      }).ready
+      document.documentElement.animate(
+        {
+          clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${maxRadius}px at ${x}px ${y}px)`],
+        },
+        {
+          duration,
+          easing,
+          pseudoElement,
+        }
+      )
+    }
   }
-
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add(globalClassName)

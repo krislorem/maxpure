@@ -4,9 +4,14 @@ import IREditor from "@/components/Vditor/IREditor";
 import VPreviewer from "@/components/Vditor/VPreviewer";
 import CalendarHeatMap from "@/components/CalendarHeatMap";
 import { Button } from "antd";
-
+import ScrollProgress from "@/components/ScrollProgress";
 const App = () => {
   const data = [
+    {
+      date: '2023-01-23',
+      count: 2,
+      level: 1,
+    },
     {
       date: '2024-06-23',
       count: 2,
@@ -25,12 +30,13 @@ const App = () => {
   ];
 
   const editorRef = useRef<{ getValue: () => string }>(null);
-  const [content, setContent] = useState(editorRef.current?.getValue() || "");
+  const [content, setContent] = useState(editorRef.current?.getValue() ?? "");
   const save = () => {
-    setContent(editorRef.current?.getValue() || "");
+    setContent(editorRef.current?.getValue() ?? "");
   };
   return (
     <div>
+      <ScrollProgress />
       <IREditor ref={editorRef} />
       <VPreviewer content={content} />
       <Button onClick={save}>save</Button>
