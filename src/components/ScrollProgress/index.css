@@ -1,0 +1,30 @@
+.scroll-progress {
+  position: sticky;
+  top: 0;
+  z-index: 99 !important;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .ant-progress-inner {
+    height: 6px;
+  }
+
+  .ant-progress-line {
+    transition: opacity 0.3s ease-in-out;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+  }
+
+  .ant-progress-bg {
+    transition: width 0.15s cubic-bezier(0.4, 0, 0.6, 1);
+    -webkit-transition: width 0.15s cubic-bezier(0.4, 0, 0.6, 1);
+    -moz-transition: width 0.15s cubic-bezier(0.4, 0, 0.6, 1);
+    -ms-transition: width 0.15s cubic-bezier(0.4, 0, 0.6, 1);
+    -o-transition: width 0.15s cubic-bezier(0.4, 0, 0.6, 1);
+  }
+}
