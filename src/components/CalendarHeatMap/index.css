@@ -1,0 +1,11 @@
+.heatmap {
+  margin: 10px 10px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .react-activity-calendar__calendar {
+    margin: 10px 10px;
+  }
+}
