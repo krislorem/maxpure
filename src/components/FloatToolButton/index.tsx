@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SwitchDarkMode from '@/components/SwitchDarkModeButton';
 import { UpOutlined } from '@ant-design/icons'
 import { Flex, FloatButton } from 'antd';
+import './index.css'
 const BOX_SIZE = 100;
 const BUTTON_SIZE = 40;
 
@@ -35,26 +36,28 @@ const FloatToolButton = () => {
     bottom: bottom,
   };
   return (
-    <Flex justify="space-evenly" align="center" style={wrapperStyle}>
-      <div style={boxStyle}>
-        <FloatButton.Group
-          key="top"
-          trigger="click"
-          placement="top"
-          style={style}
-          icon={<UpOutlined key="up" />}
-        >
-          <FloatButton />
-          <SwitchDarkMode
-            duration={1000}
-            styleId="blur-circle-animation"
-            className="!w-10 !h-10 !text-xl"
-            isDarkMode={isDarkMode}
-            onDarkModeChange={handleDarkModeChange}
-          />
-        </FloatButton.Group>
-      </div>
-    </Flex>
+    <div className="toolfloot">
+      <Flex justify="space-evenly" align="center" style={wrapperStyle}>
+        <div style={boxStyle}>
+          <FloatButton.Group
+            key="top"
+            trigger="click"
+            placement="top"
+            style={style}
+            icon={<UpOutlined key="up" />}
+          >
+            <FloatButton />
+            <SwitchDarkMode
+              duration={1000}
+              styleId="circle-animation"
+              className="!w-10 !h-10 !text-xl"
+              isDarkMode={isDarkMode}
+              onDarkModeChange={handleDarkModeChange}
+            />
+          </FloatButton.Group>
+        </div>
+      </Flex>
+    </div>
   )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { ReactThemeSwitchAnimationProps, useModeAnimation } from '@/hooks/useThemeToggle'
+import './index.css'
 
 export interface SwitchDarkModeProps extends ReactThemeSwitchAnimationProps {
   className?: string
@@ -21,6 +22,7 @@ const SwitchDarkMode: React.FC<SwitchDarkModeProps> = ({
       ref={ref}
       onClick={toggleSwitchTheme}
       style={{ borderRadius: '50%', width: '40px', height: '40px', cursor: 'pointer', fontSize: 0, backgroundColor: 'white', border: 'none', boxShadow: '0 0 20px rgba(0, 0, 0, 0.2)' }}
+      className="toggletheme"
       aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <div className="relative">{isDarkMode ? <MoonIcon /> : <SunIcon />}</div>
