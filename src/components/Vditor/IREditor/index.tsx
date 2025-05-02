@@ -9,13 +9,14 @@ const IREditor = forwardRef((_props, ref) => {
   const theme = useThemeStore(state => state.theme);
   useImperativeHandle(ref, () => ({
     getValue: () => vd?.getValue() || '',
+    getHTML: () => vd?.getHTML() || '',
   }));
   useEffect(() => {
     const vditor = new Vditor("vditor", {
       mode: "ir",
       theme: theme === "dark" ? "dark" : "classic",
       after: () => {
-        vditor.setValue("value");
+        vditor.setValue("> 开始编辑");
         setVd(vditor);
       },
     });
