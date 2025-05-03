@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
 import FloatToolButton from "@/components/FloatToolButton";
-import IREditor from "@/components/Vditor/IREditor";
+import IREditor, { editorRef } from "@/components/Vditor/IREditor";
 import VPreviewer from "@/components/Vditor/VPreviewer";
 import CalendarHeatMap from "@/components/CalendarHeatMap";
 import { Button } from "antd";
 import ScrollProgress from "@/components/ScrollProgress";
+import Independent from "@/components/QwenAntdX";
+import { editorRef } from "@/components/Vditor/IREditor";
 const Home = () => {
   const data = [
     {
@@ -29,11 +31,12 @@ const Home = () => {
     },
   ];
 
-  const editorRef = useRef<{ getValue: () => string, getHTML: () => string }>(null);
+  const editorRef = useRef<{ getValue: () => string, getHTML: () => string, getCount: () => any }>(null);
   const [content, setContent] = useState(editorRef.current?.getValue() ?? "");
   const save = () => {
     setContent(editorRef.current?.getValue() ?? "");
     console.log(editorRef?.current?.getHTML() ?? "");
+    console.log(editorRef?.current?.getCount() ?? "");
   };
   return (
     <div>
@@ -43,6 +46,7 @@ const Home = () => {
       <Button onClick={save}>save</Button>
       <FloatToolButton />
       <CalendarHeatMap data={data} />
+      <Independent />
     </div>
   );
 };

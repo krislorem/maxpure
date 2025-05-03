@@ -10,6 +10,7 @@ const IREditor = forwardRef((_props, ref) => {
   useImperativeHandle(ref, () => ({
     getValue: () => vd?.getValue() || '',
     getHTML: () => vd?.getHTML() || '',
+    getCount: () => vd?.getValue().length! - 1 || 0,
   }));
   useEffect(() => {
     const vditor = new Vditor("vditor", {
@@ -19,6 +20,10 @@ const IREditor = forwardRef((_props, ref) => {
         vditor.setValue("> 开始编辑");
         setVd(vditor);
       },
+      "counter": {
+        "enable": true,
+        "type": "markdown"
+      }
     });
     return () => {
       vd?.destroy();
@@ -36,5 +41,4 @@ const IREditor = forwardRef((_props, ref) => {
     </div>
   )
 })
-
 export default IREditor

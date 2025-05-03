@@ -23,7 +23,7 @@ export const useAnchor = (markdown: string): Anchor[] => {
       const level = match[1].length as Anchor["level"];
       const rawValue = match[2].trim();
 
-      const cleanValue = rawValue.replace(/(\*{1,2}|_{1,2})(.*?)\1/g, "$2");
+      const cleanValue = rawValue.replace(/[\s\p{P}\p{S}\u3000-\u303F\uFF00-\uFFEF]/gu, "-") // 替换所有空格、半角/全角符号为连字符
 
       const currentCount = countMap[cleanValue] || 0;
       countMap[cleanValue] = currentCount + 1;

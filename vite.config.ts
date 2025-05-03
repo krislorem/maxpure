@@ -9,4 +9,7 @@ export default defineConfig({
       '@': '/src',
     },
   },
+  define: {
+    'import.meta.env.DASHSCOPE_API_KEY': JSON.stringify(process.env.DASHSCOPE_API_KEY)
+  }
 })

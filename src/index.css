@@ -91,4 +91,7 @@ html.dark {
     }
   }
 
+  .ant-input.css-dev-only-do-not-override-1m63z2v.ant-input-borderless.ant-sender-input {
+    color: #fff;
+  }
 }
