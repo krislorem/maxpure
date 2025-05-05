@@ -8,9 +8,9 @@ const IREditor = forwardRef((_props, ref) => {
   const [vd, setVd] = useState<Vditor>();
   const theme = useThemeStore(state => state.theme);
   useImperativeHandle(ref, () => ({
-    getValue: () => vd?.getValue() || '',
-    getHTML: () => vd?.getHTML() || '',
-    getCount: () => vd?.getValue().length! - 1 || 0,
+    getValue: () => vd?.getValue() ?? '',
+    getHTML: () => vd?.getHTML() ?? '',
+    getCount: () => vd!.getValue().length - 1 || 0,
   }));
   useEffect(() => {
     const vditor = new Vditor("vditor", {

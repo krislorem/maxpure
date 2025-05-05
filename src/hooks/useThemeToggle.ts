@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { useThemeStore } from '@/stores/themeStore'
@@ -94,6 +95,7 @@ export const useModeAnimation = (props?: ReactThemeSwitchAnimationProps): ReactT
   const toggleSwitchTheme = async () => {
     if (
       !ref.current ||
+
       !(document as any).startViewTransition ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
     ) {

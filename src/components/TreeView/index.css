@@ -1,0 +1,43 @@
+.custom-tree {
+  width: 300px;
+
+  .ant-tree-node-content-wrapper.ant-tree-node-content-wrapper-normal {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+  }
+}
+
+.ant-space-item {
+  button {
+    opacity: 0;
+  }
+
+  &:hover {
+    button {
+      opacity: 1;
+    }
+  }
+}
+
+.ant-tree-node-selected {
+  color: #000 !important;
+
+  &::before {
+    background-color: #cbe4f4 !important;
+  }
+}
+
+
+.node-type-btn:focus {
+  outline: 2px solid #1890ff;
+}
+
+.node-type-btn.ant-btn-primary {
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
+
+.node-type-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.3);
+}

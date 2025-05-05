@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import SwitchDarkMode from '@/components/SwitchDarkModeButton';
-import { UpOutlined } from '@ant-design/icons'
+import { UpOutlined, ArrowUpOutlined, FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons'
 import { Flex, FloatButton } from 'antd';
 import './index.css'
 const BOX_SIZE = 100;
 const BUTTON_SIZE = 40;
-
 const wrapperStyle: React.CSSProperties = {
   position: 'absolute',
   bottom: 0,
@@ -35,6 +34,26 @@ const FloatToolButton = () => {
     insetInlineEnd: insetInlineEnd,
     bottom: bottom,
   };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const fullscreen = () => {
+    const el = document.documentElement
+    if (el.requestFullscreen) {
+      el.requestFullscreen()
+      setIsFullscreen(true)
+    }
+  }
+  const exitfullscreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen()
+      setIsFullscreen(false)
+    }
+  }
   return (
     <div className="toolfloot">
       <Flex justify="space-evenly" align="center" style={wrapperStyle}>
@@ -45,8 +64,10 @@ const FloatToolButton = () => {
             placement="top"
             style={style}
             icon={<UpOutlined key="up" />}
+            tooltip="工具"
           >
-            <FloatButton />
+            <FloatButton icon={<ArrowUpOutlined />} tooltip={"回到顶部"} onClick={scrollToTop} />
+            {!isFullscreen ? <FloatButton icon={<FullscreenOutlined />} tooltip={"全屏"} onClick={fullscreen} /> : <FloatButton icon={<FullscreenExitOutlined />} tooltip={"退出全屏"} onClick={exitfullscreen} />}
             <SwitchDarkMode
               duration={1000}
               styleId="circle-animation"

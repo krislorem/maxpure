@@ -1,12 +1,14 @@
-import { useRef, useState } from "react";
-import FloatToolButton from "@/components/FloatToolButton";
-import IREditor, { editorRef } from "@/components/Vditor/IREditor";
-import VPreviewer from "@/components/Vditor/VPreviewer";
-import CalendarHeatMap from "@/components/CalendarHeatMap";
-import { Button } from "antd";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useRef, useState } from "react"
+import FloatToolButton from "@/components/FloatToolButton"
+import IREditor from "@/components/Vditor/IREditor"
+import VPreviewer from "@/components/Vditor/VPreviewer"
+import CalendarHeatMap from "@/components/CalendarHeatMap"
+import { Button } from "antd"
+import { DataNode } from "antd/es/tree";
 import ScrollProgress from "@/components/ScrollProgress";
 import Independent from "@/components/QwenAntdX";
-import { editorRef } from "@/components/Vditor/IREditor";
+import TreeView from "@/components/TreeView"
 const Home = () => {
   const data = [
     {
@@ -30,7 +32,26 @@ const Home = () => {
       level: 3,
     },
   ];
-
+  const initialData: DataNode[] = [
+    {
+      title: 'parent 0',
+      key: '0-0',
+      isLeaf: false,
+      children: [
+        { title: 'leaf 0-0', key: '0-0-0', isLeaf: false, children: [{ title: 'leaf 0-0-0', key: '0-0-0-0', isLeaf: true }] },
+        { title: 'leaf 0-0-1', key: '0-0-1', isLeaf: true },
+      ],
+    },
+    {
+      title: 'parent 1',
+      key: '0-1',
+      isLeaf: false,
+      children: [
+        { title: 'leaf 1-0', key: '0-1-0', isLeaf: true },
+        { title: 'leaf 1-1', key: '0-1-1', isLeaf: true },
+      ],
+    },
+  ];
   const editorRef = useRef<{ getValue: () => string, getHTML: () => string, getCount: () => any }>(null);
   const [content, setContent] = useState(editorRef.current?.getValue() ?? "");
   const save = () => {
@@ -40,6 +61,7 @@ const Home = () => {
   };
   return (
     <div>
+      <TreeView data={initialData} />
       <ScrollProgress />
       <IREditor ref={editorRef} />
       <VPreviewer content={content} />

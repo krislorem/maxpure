@@ -30,7 +30,7 @@ const AnchorNav: React.FC<AnchorNavProps> = ({ anchorList }) => {
       position: 'fixed',
       right: '15px',
       top: '130px',
-      padding: '0 10px 5px 0',
+      padding: '0 10px 5px 5px',
       borderRadius: '8px',
       backdropFilter: 'blur(.9px)',
       backgroundColor: 'transparent',
@@ -39,15 +39,17 @@ const AnchorNav: React.FC<AnchorNavProps> = ({ anchorList }) => {
       <div style={{ margin: '10px 0 0 8px', color: '#586069', borderBottom: '1px dashed #777', fontSize: '12px' }}>
         大纲&nbsp;&nbsp;
       </div>
-      <nav>
+      <nav
+        style={{}}>
         {anchorList.map((anchor) => (
           <div
             key={anchor.suffix}
             style={{
-              maxWidth: '250px',
+              minWidth: '200px',
+              maxWidth: '260px',
               overflow: 'hidden',
-              paddingLeft: `${(anchor.level - 1) * 15}px`,
-              margin: '8px 0',
+              paddingLeft: `${(anchor.level - 1) * 10}px`,
+              margin: '10px 0',
               transition: 'all 0.3s',
               cursor: 'pointer',
               color: location.hash === `#${anchor.suffix}` ? '#1890ff' : '#888'

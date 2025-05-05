@@ -30,7 +30,6 @@
     "react-activity-calendar": "^2.7.10",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.3",
-    "react-simple-captcha": "^9.3.1",
     "react-tooltip": "^5.28.1",
     "vditor": "^3.11.0",
     "zustand": "^5.0.3"

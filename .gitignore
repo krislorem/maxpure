@@ -7,7 +7,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 .env
-
+examples
 node_modules
 dist
 dist-ssr
